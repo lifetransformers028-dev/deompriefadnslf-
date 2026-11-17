@@ -104,7 +104,7 @@ const totalFrames = FPS * DURATION;
 console.log('Generating', totalFrames, 'frames...');
 
 for (let f = 0; f < totalFrames; f++) {
-  const t = f / FPS;
+  const t = (f * 1000) / FPS; // milliseconds, matches scriptLines start/end
   drawFrame(t);
   fs.writeFileSync(path.join(TMP, `frame_${String(f).padStart(5, '0')}.png`), canvas.toBuffer('image/png'));
 }
